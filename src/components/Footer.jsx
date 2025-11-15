@@ -2,6 +2,7 @@ import { faFacebook, faGithub, faInstagram, faLinkedin, faTwitter } from '@forta
 import { faArrowRight, faPhone, faTruckFast } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
@@ -13,21 +14,21 @@ function Footer() {
           <p>Code licensed Luminar,docs CC by 3.0</p>
           <p>Currently v5.3.2</p>
         </div>
-        <div className='mx-5'>
+        <div className='mx-5 d-flex flex-column'>
           <h6 className='fw-bold'>Links</h6>
-          <p>Landing page</p>
-          <p>Home page</p>
-          <p>Watch history page</p>
+          <Link to={'/'} className='text-decoration-none text-light'>Home</Link>
+          <Link to={'/wishlist'} className='text-decoration-none text-light'>Wishlist</Link>
+          <Link to={'/cart'} className='text-decoration-none text-light'>Cart</Link>
         </div>
-        <div className='mx-5'>
+        <div className='mx-5 d-flex flex-column'>
           <h6 className='fw-bold'>Guides</h6>
-          <p>React</p>
-          <p>React Bootstrap</p>
-          <p>React Router</p>
+          <a className='text-decoration-none text-light' href='https://react.dev/'>React</a>
+          <a className='text-decoration-none text-light' href='https://react-bootstrap.github.io/'>React Bootstrap</a>
+          <a href='https://www.npmjs.com/package/react-router-dom' className='text-decoration-none text-light'>React Router</a>
         </div>
         <div>
           <h6 className='fw-bold'>Contact Us</h6>
-          <div className='d-flex align-items-center'><input type="text" className="form-control me-2" placeholder='Enter your email here' /><FontAwesomeIcon icon={faArrowRight} /></div>
+          <div className='d-flex align-items-center'><input type="text" className="form-control me-2" placeholder='Enter your email here' /><button className='btn'><FontAwesomeIcon icon={faArrowRight} className='text-light'/></button></div>
           <FontAwesomeIcon icon={faTwitter} className='me-2 mt-3'/>
           <FontAwesomeIcon icon={faInstagram} className='me-2 mt-3'/>
           <FontAwesomeIcon icon={faFacebook} className='me-2 mt-3' />

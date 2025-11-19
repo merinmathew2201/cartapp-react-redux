@@ -2,10 +2,12 @@ import { faCartShopping, faHeart, faTruckFast } from '@fortawesome/free-solid-sv
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Navbar,Container,Nav, Badge } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { search } from '../redux/slices/productSlice'
 
 function Header() {
+  const dispatch = useDispatch()
   // to get wishlist count from store
   const userWishList = useSelector(state=>state.wishlistReducer)
   // to get cart count from store
@@ -16,8 +18,9 @@ function Header() {
         <Navbar.Brand><Link to={'/'} className='text-decoration-none text-light '><FontAwesomeIcon className='me-1' icon={faTruckFast} />DailyCart</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Link to={'/wishlist'} className='me-2 text-decoration-none text-light '><FontAwesomeIcon className='me-1 text-danger' icon={faHeart} />Wishlist<Badge bg="secondary" className='ms-1'>{userWishList.length}</Badge></Link>
+          <Nav className="ms-auto align-items-lg-center ">
+            <Nav.Item><input onChange={e=>dispatch(search(e.target.value))} type="text" placeholder='search product' className="form-control " /></Nav.Item>
+            <Link to={'/wishlist'} className='me-2 text-decoration-none text-light mms-lg-2'><FontAwesomeIcon className='me-1 text-danger' icon={faHeart} />Wishlist<Badge bg="secondary" className='ms-1'>{userWishList.length}</Badge></Link>
             <Link to={'/cart'} className='text-decoration-none text-light '><FontAwesomeIcon className='mx-1 text-success' icon={faCartShopping} />Cart <Badge bg="secondary" className='ms-1'>{userCart.length}</Badge></Link>
           </Nav>
         </Navbar.Collapse>

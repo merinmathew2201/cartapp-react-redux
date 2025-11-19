@@ -37,11 +37,15 @@ const cartSlice = createSlice({
             existingProduct.totalPrice = existingProduct.quantity * existingProduct.price
             const remainingProducts = state.filter(item=>item.id!=action.payload)
             state = [...remainingProducts,existingProduct]
+        },
+        // empty cart
+        emptyCart:(state)=>{
+            return []
         }
 
 
 
     }
 })
-export const {addToCart,removeCartItem, incrementCartItem,decrementCartItem} = cartSlice.actions
+export const {addToCart,removeCartItem, incrementCartItem,decrementCartItem,emptyCart} = cartSlice.actions
 export default cartSlice.reducer
